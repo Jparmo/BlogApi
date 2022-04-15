@@ -9,8 +9,6 @@ from post.models import Post
 
 class Comment(models.Model):
     name = models.CharField(max_length=100)
-    #post =  models.ForeingKey(Post)
-    
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
