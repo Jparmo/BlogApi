@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block head_title %}{{title}}|{{block.super}}{% endblock head_title %}
+{% block content %}
+
+<h1>{{title}}</h1>
+<form methor='GET' action=''>
+<input type='text' name="search" placeholder='Search'/>
+<input type='submit' value='Search'/><br/>
+{% for pub in publish %}
+<a href={{pub.get_url}}>{{pub.title}}</a><br/>
+{{pub.content}}<br/>
+{{pub.timestamp}}<br/>
+{{pub.id}}<br/>
+{{pub.update}}<br/>
+<button><a href={{pub.get_url}}>View</a></button><br/>
+
+{% endfor %}
+{% endblock content %}

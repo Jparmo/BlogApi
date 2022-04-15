@@ -1,0 +1,11 @@
+    
+    {%extends "index.html"%}
+    {% block head_title %}{{title}}|{{block.super}}{% endblock head_title %}
+    {% block content %}
+    <h1>{{title}}</h1>
+    <form method='POST' action=''>{% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' value='Post'>
+    </form>
+    {% endblock content %}
+    

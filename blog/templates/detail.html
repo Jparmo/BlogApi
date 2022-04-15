@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% block head_title %}{{instance.title}}|{{block.super}}{% endblock head_title %}
+{% block content %}
+<h1>{{title}}</h1>
+    
+    {{instance.title}}<br/>
+    {{instance.content}}<br/>
+    {{instance.timestamp}}<br/>
+    {{instance.id}}<br/>
+    {{instance.update}}<br/>
+    <div>
+        <p class='lead'>Comments</p>
+        {%for comment in comments%}
+        <div>
+        {{comment.content}}
+        <br/>
+        from {{comment.name}} on {{comment.timestamp}}
+        <hr/>
+        </div>
+        
+        {% endfor %}
+    </div>
+
+{% endblock content %}
+
