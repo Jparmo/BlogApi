@@ -7,22 +7,36 @@
     {{instance.title}}<br/>
     {{instance.content}}<br/>
     {{instance.timestamp}}<br/>
-    {{instance.id}}<br/>
-    {{instance.update}}<br/>
     <div>
         <p class='lead'>Comments</p>
         <form method='POST' action='.'>{%csrf_token%}
             {{comment_form}}
             <input type='submit' value='Post comment'>
         </form>
+        <hr/>
         {%for comment in comments%}
         <div>
         {{comment.content}}
         <br/>
         from {{comment.name}} on {{comment.timestamp}}
-        <hr/>
+       <br/>
+       <br/>
+
+        {% for child_comment in comment.children %}
+        <div>
+            {{child_comment.content}}
+            {{child_comment.timestamp}}
+            <hr/>  
+        </div>   
+        {% endfor %}
+
+            <form method='POST' action='.'>{%csrf_token%}
+                {{comment_form}}
+                <input type='hidden' name='parent_id' value={{comment.id}}>
+                <input type='submit' value='Reply'>
+            </form>
         </div>
-        
+        <hr/>
         {% endfor %}
     </div>
 
