@@ -17,9 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 #from django.conf.urls import include
 from post import views
+from comments import views
+# from rest_framework import routers
+
+# router = routers.SimpleRouter()
+# router.register()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('posts/',include("post.urls")),
-    
+    path('comments/',include("comments.urls")),
+    path('api/post/',include("post.api.urls",namespace='post-api')),
+    path('api/comments/',include("comments.api.urls",namespace='comments-api')),
 ]
